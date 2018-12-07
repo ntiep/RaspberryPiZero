@@ -1,0 +1,20 @@
+From Ethernet Gadget : https://learn.adafruit.com/turning-your-raspberry-pi-zero-into-a-usb-gadget/ethernet-gadget
+
+Add :sudo nano /etc/network/interfaces
+	
+allow-hotplug usb0
+iface usb0 inet static
+        address 192.168.7.2
+        netmask 255.255.255.0
+        network 192.168.7.0
+        broadcast 192.168.7.255
+        gateway 192.168.7.1
+
+
+Run command :
+sudo ifdown usb0 (this may fail, its fine)
+sudo ifup usb0
+ifconfig usb0
+
+Config window ip for pizero : 
+Enter in 192.168.7.1 as the computer's IP address and gateway (the gateway got erased later, I think Windows just automatically uses the IP address if they're the same) the subnet mask is 255.255.255.0 same as the Pi's
